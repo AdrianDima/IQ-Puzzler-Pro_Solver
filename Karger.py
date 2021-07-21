@@ -8,10 +8,7 @@ Created on Sun Jul 18 01:17:16 2021
 import random
 import copy
 
-#grapf_text_file = open("kargerMinCut.txt", "r")
-#grapf_text_file = open("kargerMinCut_TEST.txt", "r")
-grapf_text_file = open("kargerMinCut_TEST1.txt", "r")
-#grapf_text_file = open("kargerMinCut_TEST2.txt", "r")
+grapf_text_file = open("kargerMinCut.txt", "r")
 GreadFromFile = []
 for line in grapf_text_file.readlines():
     tmp = []
@@ -29,19 +26,12 @@ for item in GreadFromFile:
         adjacentNodes.append(tmp)
     Goriginal.append(adjacentNodes)
 
+    
 def printG(G):
     for item in G:
         print(item)
     print()
-
-#printG(GreadFromFile)
-#printG(Goriginal)
-
-#G = Goriginal[:]
-
-#G = [[[2, 1], [3, 1]], [[1, 1], [4, 1], [5, 1]], [[1, 1], [4, 1]], [[2, 1], [3, 1], [5, 1]], [[2, 1], [4, 1]]]
-#printG(G)
-#print(len(G))
+    
 
 def GrapfLength(G):# count the NOT isolated vertices
     count = 0
@@ -50,17 +40,12 @@ def GrapfLength(G):# count the NOT isolated vertices
             count += 1
     return count
 
-#n = GrapfLength(G)
-#print(n)
 
 def countingPaarNodes(G):
     m = 0
     for v in G:
         m += len(v)
     return m
-
-#m = countingPaarNodes(G)
-#print(m)
 
 
 def nodesPaar(rand, G):
@@ -88,7 +73,7 @@ def adjacentNodesList(nod, G):
 
 def Karger(G):
     while GrapfLength(G) > 2:
-        printG(G)
+#        printG(G)
         m = countingPaarNodes(G)
 #        print("m = " + str(m))
         r = random.randint(1, m)
@@ -136,40 +121,22 @@ def Karger(G):
 
 
 G = copy.deepcopy(Goriginal)
-#printG(G)
+printG(G)
 Karger(G)
 printG(G)
 
-
+"""
 def minCut(G):
     for v in G:
         if v:
             return v[0][1]
     return 0
 
+
 res = []
-"""
-for i in range(1000):
+for i in range(100):
     G = copy.deepcopy(Goriginal)
     Karger(G)
-#    res.append(minCut(G))
-    m = minCut(G)
-    print(m)
-    if m == 17:
-        break
-#    print(min(res))
-
-#print(min(res))
+    res.append(minCut(G))
+print(min(res))
 """
-
-
-
-
-
-
-
-
-
-
-
- 
